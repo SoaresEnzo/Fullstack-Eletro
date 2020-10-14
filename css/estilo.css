@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat&display=swap');
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+p#declaracao {
+    text-indent: 20px;
+}
+
+h2 {
+    font-family: Montserrat, Helvetica, sans-serif;
+    text-indent: 20px;
+}
+
+h3 { font-family: Montserrat, Helvetica, sans-serif;}
+
+nav.menu {
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    position: relative;
+}
+
+nav.menu img{
+    width: 150px;
+}
+
+nav.menu a {
+    font-family: Anton,sans-serif;
+    color: red;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: black;
+
+    display: flex;
+    position: relative;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    
+    width: 20%;
+    height: 50px;
+
+    margin: 0px 25px 0px 25px;
+    border-radius: 10px;
+
+    transition: opacity 0.3s;
+}
+
+nav.menu a:hover,
+nav.menu img:hover {
+    opacity: 70%;
+}
+
+
+span p, span b {
+    align-items: center;
+}
+
+#formas_pagamento{
+    color: red;
+}
+
+.menu {
+    background-color: #FF0000;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#rodape {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto;
+}
+
+ul#filtropreco {
+    list-style: none;
+    padding-left: 15px;
+}
+
+
+input#precoMin,
+input#precoMax {
+    width: 170px;
+}
+
+ul#filtropreco button {
+    margin-top: 5px;
+}
+
+.box_produto {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    height: 200px;
+    width: 250px;
+    font-size: 13px;
+}
+
+.box_produto img{
+    width: 120px;
+}
+
+.box_produto p.velho {
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-bottom: 0px;
+}
+
+.box_produto p.novo {
+    color: red;
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 0px;
+}
+
+/*Para manter o rodapé no fundo da página*/
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #EEE9E9;
+}
+
+footer img{
+    height: 80px;
+}
+
+footer hr {
+position: relative;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+footer p#formas_pagamento {
+    margin-top: 3px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html, body {
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+}
+
+.main-container {
+    min-height: 100vh; 
+    display: block;
+    position: relative;
+    padding-bottom: 184px;
+   }
+
+/*Fim do rodapé*/
+
+
+section.lojas {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: auto;
+}
+
+div.loja {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section.contatos {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 20px;
+}
+
+div.contato {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.contato h3{
+    display: inline-block;
+    height: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.contato img{
+    height: 20px;
+    width: 20px;
+}
+
+form#msg {
+    box-sizing: border-box;
+    display: block;
+    width: 350px;
+    align-items: center;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+form#msg h4 {
+    padding: 0px;
+    margin: 0px;
+}
+
+form#msg textarea{
+    height: 100px;
+    width: 100%;
+    background-color: #cccccc;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #888888;
+}
+
+form#msg input {
+    display: block;
+    border-radius: 5px;
+    background-color: #cccccc;
+    border-width: 2px;
+    border-color: #888888;
+}
+
+form#msg input#nomemsg{
+    width: 100%;
+}
+
+form#msg input#submit{
+    margin-top: 10px;
+    display: block;
+    float: right;
+    height: 30px;
+}
+
+form#msg h4{
+    margin: 5px 0px 5px 0px;
+}
+
