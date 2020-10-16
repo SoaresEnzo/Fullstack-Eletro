@@ -44,6 +44,8 @@ function enviar() {
 }
 
 
+/*A partir daqui é desnecessário pra entregar, mas eu coloquei como adicional */
+
 /*A função primeiro põe display inline block em todos os elementos usando como base a variável categoria 
 para saber o último filtro usado, para depois verificar novamente usando o preço como base*/
 function filtrarPreco(min, max, categoria) {
