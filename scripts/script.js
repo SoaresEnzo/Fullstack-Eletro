@@ -38,8 +38,6 @@ function enviar() {
     let nome = document.getElementById("nomemsg")
     if (mensagem.value == "" || nome.value == "") {
         alert("Você deve preencher todos os campos para a sua mensagem ser enviada")
-    } else {
-        alert("Sua mensagem foi enviada, obrigado pelo contato.")
     }
 }
 
@@ -91,4 +89,15 @@ function filtrarPreco(min, max, categoria) {
             }
         }
     }
+}
+
+//Fim do filtro-------------------------------------------------
+
+function calculoPedido(){
+    let quantidade = document.getElementById('qntd'); 
+    let preco = document.getElementById('valunit');
+    let resultado= document.getElementById('val_total');
+
+    console.log(quantidade,preco,resultado)
+    resultado.value = preco.value*quantidade.value;
 }

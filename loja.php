@@ -10,12 +10,7 @@
 <body>
     <div class="main-container">
         <!-- INICIO DO MENU -->
-        <nav class="menu">
-            <a href="index.html"><img src="./imagens/logo.png" alt="Full Stack Eletro"></a>
-            <a href="produtos.html">Produtos</a>
-            <a href="loja.html">Loja</a>
-            <a href="contato.html">Contato</a>
-        </nav>
+        <?php include('menu.html');?>
         <!--FIM DO MENU-->
         <h2>Nossas lojas</h2>
         <hr>
