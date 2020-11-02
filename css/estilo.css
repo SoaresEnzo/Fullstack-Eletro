@@ -313,6 +313,7 @@ form#msg h4{
             border-radius: 5px;
         }
 
+
         .form_pedidos h4 {
             font-family: 'Montserrat';
             padding: 0px;
@@ -327,6 +328,8 @@ form#msg h4{
 
         .form_pedidos .input-block label {
             display: block;
+            font-family: 'Montserrat',sans-serif;
+            font-size: 10pt;
         }
 
         .form_pedidos .input-block input {
@@ -342,4 +345,5 @@ form#msg h4{
             background-color: #cccccc;
             width: 20%;
             margin: 10px 10% 10px 70%;
+            border: 1px solid black;
         }

@@ -18,7 +18,7 @@
             <h4>Dados do pedido</h4>
             <hr>
             <div class="input-block">
-                <label for="nomecliente">Seu nome:</label>
+                <label for="nomecliente">Seu nome</label>
                 <input type="text" name="nomecliente">
             </div>
             <div class="input-block">
