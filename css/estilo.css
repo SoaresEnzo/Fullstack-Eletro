@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat&display=swap');
 
 p {
@@ -136,52 +137,6 @@ ul#filtropreco button {
     padding: 5px;
     margin-bottom: 10px;
 }
-
-/*Para manter o rodapé no fundo da página*/
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #EEE9E9;
-}
-
-footer img{
-    height: 80px;
-}
-
-footer hr {
-position: relative;
-margin-top: 0px;
-margin-bottom: 0px;
-}
-
-footer p#formas_pagamento {
-    margin-top: 3px;
-}
-
-
-* {
-    box-sizing: border-box;
-}
-
-
-html, body {
-    box-sizing: border-box;
-    position: relative;
-    height: 100%;
-    margin: 0px;
-}
-
-.main-container {
-    min-height: 100vh; 
-    display: block;
-    position: relative;
-    padding-bottom: 184px;
-   }
-
-/*Fim do rodapé*/
-
 
 section.lojas {
     display: grid;

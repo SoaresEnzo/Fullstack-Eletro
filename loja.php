@@ -3,20 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/estilo.css">
+    <!--<link rel="stylesheet" href="./css/estilo.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Nossas Lojas</title>
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="container-fluid p-0">
         <!-- INICIO DO MENU -->
         <?php include('menu.html');?>
         <!--FIM DO MENU-->
-        <h2>Nossas lojas</h2>
-        <hr>
-        <section class="lojas">
 
-            <div class="loja">
+        <h2 class="text-dark ml-3">Nossas lojas</h2>
+        <hr>
+        <section class="lojas row my-5">
+
+            <div class="loja col-sm-4">
                 <h3>
                     Rio de Janeiro
                 </h3>
@@ -34,7 +39,7 @@
                 </p>
 
             </div>
-            <div class="loja">
+            <div class="loja col-sm-4">
                 <h3>
                     São Paulo
                 </h3>
@@ -52,7 +57,7 @@
                 </p>
             </div>
 
-            <div class="loja">
+            <div class="loja col-sm-4">
                 <h3>
                     Santa Catarina
                 </h3>
@@ -74,14 +79,8 @@
 
 
         </section>
-        <footer id="rodape">
-            <hr>
-            <p id="formas_pagamento">
-                <b>Formas de pagamento:</b>
-            </p>
-            <img src="./imagens/forma-de-pagamento.png" alt="Formas de pagamento">
-            <p>&copy; 2020 RecodePro</p>
-        </footer>
+        
+        <?php include('rodape.html'); ?>
     </div>
 </body>
 
