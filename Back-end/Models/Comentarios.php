@@ -14,4 +14,17 @@ class Comentario
         $stmt = $conn->query("SELECT * FROM comentarios");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function registerComment()
+    {
+        $conn = Connection::getConnection();
+        $stmt = $conn->query("INSERT INTO comentarios(nome,comentario,data) VALUES ('$this->nome','$this->comentario',NOW())");
+        if($stmt->rowCount()>0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

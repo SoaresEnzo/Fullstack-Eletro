@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 04-Dez-2020 às 23:27
+-- Tempo de geração: 05-Dez-2020 às 01:40
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `comentario` varchar(300) NOT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idcomentarios`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `comentarios`
@@ -50,7 +50,11 @@ INSERT INTO `comentarios` (`idcomentarios`, `nome`, `comentario`, `data`) VALUES
 (6, 'Pedro', 'Mais um teste', '2020-11-01 01:58:56'),
 (7, 'Oristes', 'Teste', '2020-11-01 01:59:07'),
 (22, '', '', '2020-11-01 20:10:28'),
-(21, 'Elias', 'Testando', '2020-11-01 02:20:21');
+(21, 'Elias', 'Testando', '2020-11-01 02:20:21'),
+(23, 'Oláaa', 'testeeeeee', '2020-12-04 21:08:20'),
+(24, 'Oláaa', 'testeeeeee', '2020-12-04 21:08:25'),
+(25, 'Heya', 'Mais um', '2020-12-04 21:08:32'),
+(26, 'Oui', 'rheherher', '2020-12-04 21:24:01');
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedido_produto_idx` (`fk_produto`),
   KEY `fk_pedido_estado_idx` (`estado_endereco`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pedidos`

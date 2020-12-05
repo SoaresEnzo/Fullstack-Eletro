@@ -5,14 +5,14 @@ import Footer from '../../Components/Footer';
 function Lojas() {
     return (
         
-        <div class="container-fluid p-0">
+        <div className="container-fluid p-0">
             <Menu />
 
-            <h2 class="text-dark ml-3">Nossas lojas</h2>
+            <h2 className="text-dark ml-3">Nossas lojas</h2>
             <hr></hr>
-                <section class="lojas row my-5">
+                <section className="lojas row my-5">
 
-                    <div class="loja col-sm-4">
+                    <div className="loja col-sm-4">
                         <h3>
                         Rio de Janeiro
                 </h3>
@@ -30,7 +30,7 @@ function Lojas() {
                 </p>
 
                     </div>
-                    <div class="loja col-sm-4">
+                    <div className="loja col-sm-4">
                         <h3>
                         São Paulo
                 </h3>
@@ -48,7 +48,7 @@ function Lojas() {
                 </p>
                     </div>
 
-                    <div class="loja col-sm-4">
+                    <div className="loja col-sm-4">
                         <h3>
                         Santa Catarina
                 </h3>

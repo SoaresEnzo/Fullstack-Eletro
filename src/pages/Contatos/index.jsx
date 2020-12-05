@@ -5,9 +5,11 @@ import Wpp from '../../images/WhatsApp-icone.png';
 import Email from '../../images/emailrender.png';
 
 
-function LoadComments() {
+function Contatos() {
     const [comments, setComments] = useState([]);
-    
+    const [render, setRender] = useState(false)
+    const [aviso, setAviso] = useState(false)
+
     useEffect(() => {
 
         async function dumpComments() {
@@ -15,81 +17,99 @@ function LoadComments() {
             const response = await fetch(url);
             setComments(await response.json());
         }
-        
+
         dumpComments()
-    }, [])
+    }, [render])
 
-    return (
-        comments.map((comment) => {
-            return (
-                <div class="comentario container-fluid" key={comment.idcomentarios}>
-                    <div class="comment container bg-light border border-dark text-dark my-2">
-                        <div class="commflex d-flex justify-content-between">
-                            <h3 class="text-dark">{comment.nome}</h3>
-                            <p class="data m-0 p-0 align-self-end d-flex">{comment.data}</p>
-                        </div>
-                        <hr />
-                        <p>{comment.comentario}</p>
-                    </div>
-                </div>
-            )
+    function registerComment(event) {
+        event.preventDefault();
+        let formData = new FormData(event.target);
+        const url = "http://recode/fullstackeletro/Back-end/register-comment.php";
+        fetch(url, {
+            method: "POST",
+            body: formData
         })
-    )
+            .then((response) => response.json())
+            .then((dados) => {
+                setRender(!render)
+                setAviso(dados)
+                setTimeout(
+                    () => {
+                        setAviso(false)
+                    },
+                    3000)
 
-}
+            })
 
+    }
 
-function Contatos() {
     return (
-        <div class="container-fluid p-0">
+        <div className="container-fluid p-0">
             <Menu />
             <main>
-                <h2 class="text-dark ml-3">Contato</h2>
+                <h2 className="text-dark ml-3">Contato</h2>
                 <hr />
-                <div class="row">
-                    <section class="contatos container-fluid d-flex">
-                        <div class="col-md-6 justify-content-center">
+                <div className="row">
+                    <section className="contatos container-fluid d-flex">
+                        <div className="col-md-6 justify-content-center">
 
-                            <div class="contato container justify-content-center d-flex">
-                                <img src={Email} class="img img-fluid" alt="Logo email" style={{ width: '35px' }} />
-                                <h3 class="text-dark">contato@fullstackeletro.com</h3>
+                            <div className="contato container justify-content-center d-flex">
+                                <img src={Email} className="img img-fluid" alt="Logo email" style={{ width: '35px' }} />
+                                <h3 className="text-dark">contato@fullstackeletro.com</h3>
                             </div>
                         </div>
 
-                        <div class="col-md-6 justify-content-center">
-                            <div class="contato container justify-content-center d-flex">
-                                <img src={Wpp} class="img img-fluid" alt="Logo telefone" style={{ width: '35px' }} />
-                                <h3 class="text-dark">(11) 9999-99999</h3>
+                        <div className="col-md-6 justify-content-center">
+                            <div className="contato container justify-content-center d-flex">
+                                <img src={Wpp} className="img img-fluid" alt="Logo telefone" style={{ width: '35px' }} />
+                                <h3 className="text-dark">(11) 9999-99999</h3>
                             </div>
                         </div>
 
                     </section>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <div class="container-fluid">
-                            <form id="msg" action="" method="POST">
-                                <div class="form-group">
-                                    <label for="">Nome:</label>
-                                    <input type="text" name="nomemsg" id="nomemsg" class="form-control" placeholder="" aria-describedby="helpId" />
+                <div className="row">
+                    <div className="col-sm-2"></div>
+                    <div className="col-sm-8">
+                        <div className="container-fluid">
+                            <form onSubmit={registerComment}>
+                                <div className="form-group">
+                                    <label for="nomemsg">Nome:</label>
+                                    <input type="text" name="nomemsg" id="nomemsg" className="form-control" placeholder="" aria-describedby="helpId" />
+                                </div>
+                                <div className="form-group">
+                                    <label for="mensagemmsg">Mensagem:</label>
+                                    <textarea className="form-control" name="mensagemmsg" id="mensagem" rows="3"></textarea>
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label for="">Mensagem:</label>
-                                    <textarea class="form-control" name="mensagemmsg" id="mensagem" rows="3"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="submit" className="btn btn-primary">Enviar</button>
                             </form>
                         </div>
+
+                        {
+                            aviso && <div className="alert alert-success" role="alert">
+                                Mensagem enviada com sucesso.
+                          </div>
+                        }
                     </div>
-                    <div class="col-sm-2"></div>
+                    <div className="col-sm-2"></div>
                 </div>
 
-                <LoadComments />
+                {comments.map((comment) => {
+                    return (
+                        <div className="comentario container-fluid" key={comment.idcomentarios}>
+                            <div className="comment container bg-light border border-dark text-dark my-2">
+                                <div className="commflex d-flex justify-content-between">
+                                    <h3 className="text-dark">{comment.nome}</h3>
+                                    <p className="data m-0 p-0 align-self-end d-flex">{comment.data}</p>
+                                </div>
+                                <hr />
+                                <p>{comment.comentario}</p>
+                            </div>
+                        </div>
+                    )
+                })}
             </main>
             <Footer />
         </div>

@@ -39,16 +39,15 @@ function RetornoBanco() {
 
 function MostrarPedidos() {
     return (
-
-        <div class="container-fluid p-0">
+        <div className="container-fluid p-0">
             <Menu />
             <section>
 
                 <h2 className="text-dark ml-3">Todos os pedidos</h2>
 
                 <div className="container">
-                    <table class="table table-striped table-responsive-sm table-bordered table-hover table-lg">
-                        <thead class="thead-dark text-light">
+                    <table className="table table-striped table-responsive-sm table-bordered table-hover table-lg">
+                        <thead className="thead-dark text-light">
                             <tr>
                                 <th>Cliente</th>
                                 <th>Telefone</th>

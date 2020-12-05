@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Menu from '../../Components/Menu';
 import Footer from '../../Components/Footer';
 
-function getInfo(){
+function getInfo() {
     const queryString = window.location.href;
     const urlParams = new URLSearchParams(queryString);
 
-    return [urlParams.get('produto'),urlParams.get('preco')];
+    return [urlParams.get('produto'), urlParams.get('preco'), urlParams.get('produtoid')];
 }
 
 function FazerPedido() {
-    console.log(getInfo()[1])
+    const [erro, setErro] = useState(false);
+    const [sucesso, setSucesso] = useState(false);
+
+    function registerOrder(event) {
+        event.preventDefault();
+        let formData = new FormData(event.target);
+        const url = "http://recode/fullstackeletro/Back-end/register-order.php";
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+            .then((response) => response.json())
+            .then((dados) => {
+                if(dados){
+                    setSucesso(true)
+                    setTimeout(
+                        () => {
+                            setSucesso(false)
+                        },
+                        3000)
+                } else {
+                    setErro(true)
+                    setTimeout(
+                        () => {
+                            setErro(false)
+                        },
+                        3000)
+
+                }
+            })
+
+    }
+
     return (
         <div className="main-container" style={{ paddingBottom: '0', minHeight: '0vh' }}>
             <Menu />
             <div className="row my-4">
                 <div className="col-sm-2"></div>
                 <div className="col-sm-8 bg-light border border-dark">
-                    <form action="#" method="POST" className="form_pedidos">
+                    <form onSubmit={registerOrder} className="form_pedidos">
                         <h4 className="text-dark ml-3">Dados do pedido</h4>
                         <hr />
                         <div className="form-group">
@@ -32,9 +64,9 @@ function FazerPedido() {
 
 
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="estado">Seu estado:</label>
-                            <select class="custom-select" name="estado">
+                            <select className="custom-select" name="estado">
                                 <option value="1">Acre</option>
                                 <option value="2">Alagoas</option>
                                 <option value="3">Amapá</option>
@@ -103,12 +135,24 @@ function FazerPedido() {
                             <label for="val_total">Valor Total</label>
                             <input type="number" name="val_total" id="val_total" className="form-control" placeholder="" disabled />
                         </div>
+                        <input type="text" name="idproduto" value={getInfo()[2]} readOnly hidden />
 
 
                         <div className="container justify-content-end align-items-center" style={{ display: 'flex' }}>
                             <button type="submit" className="btn btn-primary btn-lg">Enviar Pedido</button>
                         </div>
                     </form>
+
+                    {
+                        sucesso && <div className="alert alert-success" role="alert">
+                            Pedido enviado com sucesso.
+                          </div>
+                    }
+                     {
+                        erro && <div className="alert alert-danger" role="alert">
+                            Algo deu errado, cheque seu pedido.
+                          </div>
+                    }
                 </div>
                 <div className="col-sm-2"></div>
             </div>

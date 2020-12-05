@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 
 function Landing() {
     return (
-        <div class="main-container">
+        <div className="main-container">
             <Menu />
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-3">Sejam bem vindo(as)</h1>
-                    <p class="lead">Aqui em nossa loja, <em>programadores tem desconto</em> nos produtos para sua casa!</p>
-                    <hr class="my-2"></hr>
+            <div className="jumbotron jumbotron-fluid">
+                <div className="container">
+                    <h1 className="display-3">Sejam bem vindo(as)</h1>
+                    <p className="lead">Aqui em nossa loja, <em>programadores tem desconto</em> nos produtos para sua casa!</p>
+                    <hr className="my-2"></hr>
                     <p>Veja nossa seleção de eletrodomésticos</p>
-                    <p class="lead">
+                    <p className="lead">
                         <Link to="/produtos" className="btn btn-primary btn-lg">Comprar</Link>
                     </p>
                 </div>
