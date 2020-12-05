@@ -1,0 +1,10 @@
+Mudanças na refatoração
+---Bootstrap:
+Lista de categorias na página de produtos
+---Banco de dados:
+Uso das 2FN's e retorno de dados com INNER JOIN na página com 
+todos os pedidos
+---PHP:
+Todos os dados estão retornando em JSON, na pasta back-end
+---React:
+Todo o projeto foi refeito em React
