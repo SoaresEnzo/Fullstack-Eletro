@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 05-Dez-2020 às 01:40
+-- Tempo de geração: 06-Dez-2020 às 07:34
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -169,18 +169,18 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 --
 
 INSERT INTO `produtos` (`idproduto`, `nome_produto`, `descricao`, `preco`, `imagem`, `categoria`, `preco_original`) VALUES
-(4, 'Refrigerador LG Frost Free Side by Side InstaView Door-in-Door – 601L ', NULL, '16999.00', 'LGeladeira.webp', 'geladeira', '20199.00'),
-(5, 'Geladeira Samsung Inverter Frost Free Duplex Inverse BAROSA com Smart Sensor e Rack para Vinho', NULL, '5019.00', 'Samsung Digital inverter.webp', 'geladeira', '6389.00'),
-(6, 'Fogão de Piso Electrolux de 05 Bocas com Mesa de Vidro e Queimadores Tripla Chama Preto - 76GS ', NULL, '1699.00', 'Fogão2.jpg', 'fogao', '2419.00'),
-(7, 'Micro-ondas LG 30L Solo com Grill MH7097AR - Preto', NULL, '699.00', 'microondas1.jpg', 'microondas', '799.00'),
-(8, 'Lava Louças 14 Serviços Brastemp com Ciclo Pesado - BLF14AR ', NULL, '3599.00', 'louça1.webp', 'lavaloucas', '5199.00'),
-(9, 'Geladeira Samsung Inverter Frost Free Duplex Inverse BAROSA com Smart Sensor', NULL, '4999.00', 'samsung inverse barosa.webp', 'geladeira', '6299.00'),
-(10, 'Fogão 5 Bocas Electrolux Prata Automático com Mesa de Vidro e 2 Fornos', NULL, '3799.00', 'FogãoElectrolux.webp', 'fogao', '3899.00'),
-(11, 'Micro-ondas Brastemp Espelhado 32 Litros - BMS45 220v', NULL, '699.00', 'microondas2.jpg', 'microondas', '899.00'),
-(12, 'Micro-Ondas de Embutir com Função Grill e Painel Blue Touch', NULL, '2699.00', 'microondas3.png', 'microondas', '3999.00'),
-(13, 'Lavadora de Roupas Electrolux 16kg Branca com 12 Programas de', NULL, '1699.00', 'lavadora1.jpg', 'lavadora', '2199.00'),
-(14, 'Lava e Seca Samsung 11kg WD11M4453J - 12 Programas de Lavagem', NULL, '3699.00', 'lavadora2.jpg', 'lavadora', '4099.00'),
-(15, 'Lava Louças Inox 10 Serviços (LV10X) - 220V', NULL, '3499.00', 'Dishwasher_LV10X_Front.webp', 'lavaloucas', '4199.00');
+(4, 'Refrigerador LG Frost Free Side by Side InstaView Door-in-Door – 601L ', NULL, '16999.00', 'LGeladeira.webp', 'Geladeiras', '20199.00'),
+(5, 'Geladeira Samsung Inverter Frost Free Duplex Inverse BAROSA com Smart Sensor e Rack para Vinho', NULL, '5019.00', 'Samsung Digital inverter.webp', 'Geladeiras', '6389.00'),
+(6, 'Fogão de Piso Electrolux de 05 Bocas com Mesa de Vidro e Queimadores Tripla Chama Preto - 76GS ', NULL, '1699.00', 'Fogão2.jpg', 'Fogões', '2419.00'),
+(7, 'Micro-ondas LG 30L Solo com Grill MH7097AR - Preto', NULL, '699.00', 'microondas1.jpg', 'Microondas', '799.00'),
+(8, 'Lava Louças 14 Serviços Brastemp com Ciclo Pesado - BLF14AR ', NULL, '3599.00', 'louça1.webp', 'Lava-louças', '5199.00'),
+(9, 'Geladeira Samsung Inverter Frost Free Duplex Inverse BAROSA com Smart Sensor', NULL, '4999.00', 'samsung inverse barosa.webp', 'Geladeiras', '6299.00'),
+(10, 'Fogão 5 Bocas Electrolux Prata Automático com Mesa de Vidro e 2 Fornos', NULL, '3799.00', 'FogãoElectrolux.webp', 'Fogões', '3899.00'),
+(11, 'Micro-ondas Brastemp Espelhado 32 Litros - BMS45 220v', NULL, '699.00', 'microondas2.jpg', 'Microondas', '899.00'),
+(12, 'Micro-Ondas de Embutir com Função Grill e Painel Blue Touch', NULL, '2699.00', 'microondas3.png', 'Microondas', '3999.00'),
+(13, 'Lavadora de Roupas Electrolux 16kg Branca com 12 Programas de', NULL, '1699.00', 'lavadora1.jpg', 'Lava-roupas', '2199.00'),
+(14, 'Lava e Seca Samsung 11kg WD11M4453J - 12 Programas de Lavagem', NULL, '3699.00', 'lavadora2.jpg', 'Lava-roupas', '4099.00'),
+(15, 'Lava Louças Inox 10 Serviços (LV10X) - 220V', NULL, '3499.00', 'Dishwasher_LV10X_Front.webp', 'Lava-louças', '4199.00');
 
 --
 -- Restrições para despejos de tabelas

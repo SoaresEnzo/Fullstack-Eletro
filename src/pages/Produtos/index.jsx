@@ -3,44 +3,34 @@ import Menu from '../../Components/Menu';
 import Footer from '../../Components/Footer';
 import { Link } from 'react-router-dom';
 
-function Vitrine() {
-    var [produto, setProduto] = React.useState([]);
+function Produtos() {
+
+    const [produto, setProduto] = React.useState([]);
+    const [categoria, setCategorias] = React.useState([]);
+    const [filtro, setFiltro] = React.useState('Todos');
+
+    async function fetchData(url, func) {
+        const response = await fetch(url)
+        let dados = await response.json()
+        func(dados);
+    }
+
     useEffect(
         () => {
-            async function fetchData() {
-                const url = "http://localhost/Projetos_PHP/fullstackeletro/Back-end/produtos.php";
-                const response = await fetch(url)
-                setProduto(await response.json())
-            }
-            fetchData()
+            fetchData("http://localhost/Projetos_PHP/fullstackeletro/Back-end/produtos.php", setProduto)
+
         }, [])
 
-    return (
-        produto.map(
-            (produto) => {
-                return (
-                    <div className="box_produto container align-self-end mx-3 my-3 text-center" id={produto.categoria} onClick="destaque(this)" style={{ width: '250px', padding: '0px', margin: '0px' }}>
-                        <img src={require('../../images/' + produto.imagem).default} style={{ width: '120px' }} alt="img-produto"></img>
-                        <br></br>
-                        {produto.nome_produto}
-                        <hr style={{ margin: '0px' }}></hr>
-                        <small className="text-danger">R$ {produto.preco_original}</small>
-                        <p className="novo text-dark lead"><b>R$ {produto.preco} </b></p>
-
-                        <Link to={{
-                            pathname: '/fazerpedido/',
-                            search: '&produto=' + produto.nome_produto + '&preco=' + produto.preco + '&produtoid=' + produto.idproduto
-                        }} className="btn btn-block btn-danger">Fazer pedido</Link>
-                    </div>
-                )
-            })
-    )
-
-}
+    useEffect(
+        () => {
+            fetchData("http://localhost/Projetos_PHP/fullstackeletro/Back-end/categorias.php", setCategorias)
+        }, [])
 
 
+    function handleClick(event) {
+        setFiltro(event.target.id)
+    }
 
-function Produtos() {
     return (
         <div className="main-container">
             <Menu />
@@ -54,31 +44,22 @@ function Produtos() {
                     <h3>
                         Categorias
                 </h3>
-                    <ul className="list-group">
-                        <li onClick="mostrarTodos()" className="list-group-item list-group-item-action">
-                            Todos (12)
-                        </li>
+                    <div className="list-group">
+                        {categoria.map((categ) => {
+                            return (
+                                <button onClick={handleClick} id={categ.categoria} className="list-group-item list-group-item-action">
+                                    {categ.categoria} ({categ.quantidade})
+                                </button>
+                            )
+                        }
+                        )
+                        }
 
-                        <li onClick="mostrarCategoria('geladeira')" className="list-group-item list-group-item-action">
-                            Geladeiras (3)
-                    </li>
-                        <li onClick="mostrarCategoria('fogao')" className="list-group-item list-group-item-action">
-                            Fogões (2)
-                    </li>
-                        <li onClick="mostrarCategoria('microondas')" className="list-group-item list-group-item-action">
-                            Microondas (3)
-                    </li>
-                        <li onClick="mostrarCategoria('lavadora')" className="list-group-item list-group-item-action">
-                            Lavadora de roupas (2)
-                    </li>
-                        <li onClick="mostrarCategoria('lavaloucas')" className="list-group-item list-group-item-action">
-                            Lava-louças (2)
-                    </li>
-                    </ul>
+                    </div>
 
                     <h3>
                         Preço
-                </h3>
+                    </h3>
 
                     <ul id="filtropreco" className="list-group">
                         <li className="list-group-item">
@@ -104,7 +85,25 @@ function Produtos() {
 
                 <section className="produtos col-md-10">
                     <div className="row">
-                        <Vitrine />
+
+                        {produto.filter(
+                            produtoFiltrar => produtoFiltrar.categoria == filtro || filtro == 'Todos').map(produto => (
+                            <div className="box_produto container align-self-end mx-3 my-3 text-center" id={produto.categoria} onClick="destaque(this)" style={{ width: '250px', padding: '0px', margin: '0px' }}>
+                            <img src={require('../../images/' + produto.imagem).default} style={{ width: '120px' }} alt="img-produto"></img>
+                            <br></br>
+                            {produto.nome_produto}
+                            <hr style={{ margin: '0px' }}></hr>
+                            <small className="text-danger">R$ {produto.preco_original}</small>
+                            <p className="novo text-dark lead"><b>R$ {produto.preco} </b></p>
+
+                            <Link to={{
+                                pathname: '/fazerpedido/',
+                                search: '&produto=' + produto.nome_produto + '&preco=' + produto.preco + '&produtoid=' + produto.idproduto
+                            }} className="btn btn-block btn-danger">Fazer pedido</Link>
+                        </div>
+                        )
+                        )}
+                    
                     </div>
                 </section>
             </div>
