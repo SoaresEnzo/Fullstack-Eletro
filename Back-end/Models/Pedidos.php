@@ -44,6 +44,7 @@ class Pedido
     public function registerOrder()
     {
         $conn = Connection::getConnection();
+        
         $stmt = $conn->query("INSERT INTO pedidos(nome_cliente,
             estado_endereco,
             bairro_endereco,

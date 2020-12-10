@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom';
 function Produtos() {
 
     const [produto, setProduto] = React.useState([]);
-    const [categoria, setCategorias] = React.useState([]);
-    const [filtro, setFiltro] = React.useState('Todos');
+    let [categoria, setCategorias] = React.useState([]);
+    let [filtro, setFiltro] = React.useState({
+        categ: 'Todos',
+        precoMin: 0,
+        precoMax: 999999999999
+    });
 
     async function fetchData(url, func) {
         const response = await fetch(url)
@@ -29,6 +33,23 @@ function Produtos() {
 
     function handleClick(event) {
         setFiltro(event.target.id)
+        setFiltro({
+            categ: event.target.id,
+            precoMin: filtro.precoMin,
+            precoMax: filtro.precoMax
+        })
+    }
+
+    function filtrarPreco(){
+
+        const precomin = parseFloat(document.getElementById("precoMin").value)
+        const precomax = parseFloat(document.getElementById("precoMax").value)
+        setFiltro({
+            categ: filtro.categ,
+            precoMin: precomin,
+            precoMax: precomax
+        })
+        
     }
 
     return (
@@ -47,7 +68,7 @@ function Produtos() {
                     <div className="list-group">
                         {categoria.map((categ) => {
                             return (
-                                <button onClick={handleClick} id={categ.categoria} className="list-group-item list-group-item-action">
+                                <button onClick={handleClick} id={categ.categoria} key={categ.categoria} className="list-group-item list-group-item-action">
                                     {categ.categoria} ({categ.quantidade})
                                 </button>
                             )
@@ -64,20 +85,20 @@ function Produtos() {
                     <ul id="filtropreco" className="list-group">
                         <li className="list-group-item">
                             <div className="form-group">
-                                <label for="precoMin">De:</label>
+                                <label htmlFor="precoMin">De:</label>
                                 <input type="number" name="precoMin" id="precoMin" className="form-control input" placeholder="" aria-describedby="helpId"></input>
                             </div>
                         </li>
 
                         <li className="list-group-item">
                             <div className="form-group">
-                                <label for="precoMax">Até:</label>
+                                <label htmlFor="precoMax">Até:</label>
                                 <input type="number" name="precoMin" id="precoMax" className="form-control input" placeholder="" aria-describedby="helpId"></input>
                             </div>
                         </li>
 
                         <li className="list-group-item">
-                            <button className="btn btn-block btn-outline-danger" onClick="filtrarPreco(precoMin.value,precoMax.value,categoria)">Filtrar</button>
+                            <button className="btn btn-block btn-outline-danger" onClick={filtrarPreco}>Filtrar</button>
                         </li>
                     </ul>
 
@@ -87,23 +108,23 @@ function Produtos() {
                     <div className="row">
 
                         {produto.filter(
-                            produtoFiltrar => produtoFiltrar.categoria == filtro || filtro == 'Todos').map(produto => (
-                            <div className="box_produto container align-self-end mx-3 my-3 text-center" id={produto.categoria} onClick="destaque(this)" style={{ width: '250px', padding: '0px', margin: '0px' }}>
-                            <img src={require('../../images/' + produto.imagem).default} style={{ width: '120px' }} alt="img-produto"></img>
-                            <br></br>
-                            {produto.nome_produto}
-                            <hr style={{ margin: '0px' }}></hr>
-                            <small className="text-danger">R$ {produto.preco_original}</small>
-                            <p className="novo text-dark lead"><b>R$ {produto.preco} </b></p>
+                            produtoFiltrar => (produtoFiltrar.categoria === filtro.categ && parseFloat(produtoFiltrar.preco) > filtro.precoMin && parseFloat(produtoFiltrar.preco) < filtro.precoMax) || (filtro.categ === 'Todos' && parseFloat(produtoFiltrar.preco) > filtro.precoMin && parseFloat(produtoFiltrar.preco) < filtro.precoMax)).map(produto => (
+                                <div className="box_produto container align-self-end mx-3 my-3 text-center" id={produto.categoria} key={produto.idproduto} style={{ width: '250px', padding: '0px', margin: '0px' }}>
+                                    <img src={require('../../images/' + produto.imagem).default} style={{ width: '120px' }} alt="img-produto"></img>
+                                    <br></br>
+                                    {produto.nome_produto}
+                                    <hr style={{ margin: '0px' }}></hr>
+                                    <small className="text-danger">R$ {produto.preco_original}</small>
+                                    <p className="novo text-dark lead"><b>R$ {produto.preco} </b></p>
 
-                            <Link to={{
-                                pathname: '/fazerpedido/',
-                                search: '&produto=' + produto.nome_produto + '&preco=' + produto.preco + '&produtoid=' + produto.idproduto
-                            }} className="btn btn-block btn-danger">Fazer pedido</Link>
-                        </div>
-                        )
-                        )}
-                    
+                                    <Link to={{
+                                        pathname: '/fazerpedido/',
+                                        search: '&produto=' + produto.nome_produto + '&preco=' + produto.preco + '&produtoid=' + produto.idproduto
+                                    }} className="btn btn-block btn-danger">Fazer pedido</Link>
+                                </div>
+                            )
+                            )}
+
                     </div>
                 </section>
             </div>

@@ -19,7 +19,7 @@ function RetornoBanco() {
         linhas.map(
             (linha) => {
                 return (
-                    <tr>
+                    <tr key={linha.id_pedido}>
                         <td>{linha.nome_cliente}</td>
                         <td>{linha.telefone_cliente}</td>
                         <td>{linha.nome_estado + ", " + linha.cidade_endereco + ", " + linha.bairro_endereco + ", " + linha.logradouro_endereco + ", " + linha.numero_endereco}</td>

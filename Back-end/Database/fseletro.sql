@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 06-Dez-2020 às 07:34
+-- Tempo de geração: 10-Dez-2020 às 20:05
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedido_produto_idx` (`fk_produto`),
   KEY `fk_pedido_estado_idx` (`estado_endereco`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pedidos`
@@ -144,7 +144,16 @@ INSERT INTO `pedidos` (`id_pedido`, `nome_cliente`, `estado_endereco`, `bairro_e
 (16, 'Enzo', 7, 'Bosque dos Perdidos', 'Outra rua', '502', 'Cidade Placeholder', '22222222222', 5, '1000-01-01 00:00:00', 13, 10101010101),
 (17, 'Enzo', 2, 'Rio Escuro', 'Mais uma rua', '111', 'Cidade Placeholder', '22222222222', 5, '1000-01-01 00:00:00', 9, 11101010101),
 (18, 'Zé', 5, 'Rio X', 'Alguma rua', '235', 'Cidade Placeholder', '111111111111', 5, '1000-01-01 00:00:00', 8, 11011010101),
-(19, 'Vikk', 1, 'Rio Z', 'Rua qualquer', '212', 'Cidade Placeholder', '55555555555', 2, '1000-01-01 00:00:00', 10, 11110101001);
+(19, 'Vikk', 1, 'Rio Z', 'Rua qualquer', '212', 'Cidade Placeholder', '55555555555', 2, '1000-01-01 00:00:00', 10, 11110101001),
+(36, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:23', 6, 11111111111),
+(37, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:26', 6, 11111111111),
+(38, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:27', 6, 11111111111),
+(39, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:27', 6, 11111111111),
+(40, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:28', 6, 11111111111),
+(41, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:28', 6, 11111111111),
+(42, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:29', 6, 11111111111),
+(43, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:29', 6, 11111111111),
+(44, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:42', 6, 11111111111);
 
 -- --------------------------------------------------------
 

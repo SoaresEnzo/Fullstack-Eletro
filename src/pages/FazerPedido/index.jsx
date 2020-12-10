@@ -13,8 +13,11 @@ function FazerPedido() {
     const [erro, setErro] = useState(false);
     const [sucesso, setSucesso] = useState(false);
 
+    
+
     function registerOrder(event) {
         event.preventDefault();
+        
         let formData = new FormData(event.target);
         const url = "http://recode/fullstackeletro/Back-end/register-order.php";
         fetch(url, {
@@ -148,6 +151,7 @@ function FazerPedido() {
                             Pedido enviado com sucesso.
                           </div>
                     }
+                    
                      {
                         erro && <div className="alert alert-danger" role="alert">
                             Algo deu errado, cheque seu pedido.

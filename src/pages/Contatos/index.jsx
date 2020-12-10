@@ -75,11 +75,11 @@ function Contatos() {
                         <div className="container-fluid">
                             <form onSubmit={registerComment}>
                                 <div className="form-group">
-                                    <label for="nomemsg">Nome:</label>
+                                    <label htmlFor="nomemsg">Nome:</label>
                                     <input type="text" name="nomemsg" id="nomemsg" className="form-control" placeholder="" aria-describedby="helpId" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="mensagemmsg">Mensagem:</label>
+                                    <label htmlFor="mensagemmsg">Mensagem:</label>
                                     <textarea className="form-control" name="mensagemmsg" id="mensagem" rows="3"></textarea>
                                 </div>
 
@@ -98,7 +98,8 @@ function Contatos() {
 
                 {comments.map((comment) => {
                     return (
-                        <div className="comentario container-fluid" key={comment.idcomentarios}>
+                        <div className="row d-flex justify-content-center" key={comment.idcomentarios}>
+                        <div className="comentario container-fluid col-sm-8">
                             <div className="comment container bg-light border border-dark text-dark my-2">
                                 <div className="commflex d-flex justify-content-between">
                                     <h3 className="text-dark">{comment.nome}</h3>
@@ -107,6 +108,7 @@ function Contatos() {
                                 <hr />
                                 <p>{comment.comentario}</p>
                             </div>
+                        </div>
                         </div>
                     )
                 })}
