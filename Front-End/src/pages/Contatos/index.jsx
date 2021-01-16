@@ -13,7 +13,7 @@ function Contatos() {
     useEffect(() => {
 
         async function dumpComments() {
-            const url = "http://localhost/Projetos_PHP/fullstackeletro/Back-end/comentarios.php";
+            const url = "http://localhost:5000/getcomentarios";
             const response = await fetch(url);
             setComments(await response.json());
         }
@@ -23,11 +23,19 @@ function Contatos() {
 
     function registerComment(event) {
         event.preventDefault();
+
         let formData = new FormData(event.target);
-        const url = "http://recode/fullstackeletro/Back-end/register-comment.php";
+        const beforeJson = Object.fromEntries(formData.entries());
+        const jsonForm = JSON.stringify(beforeJson)
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        const url = "http://localhost:5000/insertcomment";
         fetch(url, {
+            headers: headers,
             method: "POST",
-            body: formData
+            body: jsonForm
         })
             .then((response) => response.json())
             .then((dados) => {
@@ -99,16 +107,16 @@ function Contatos() {
                 {comments.map((comment) => {
                     return (
                         <div className="row d-flex justify-content-center" key={comment.idcomentarios}>
-                        <div className="comentario container-fluid col-sm-8">
-                            <div className="comment container bg-light border border-dark text-dark my-2">
-                                <div className="commflex d-flex justify-content-between">
-                                    <h3 className="text-dark">{comment.nome}</h3>
-                                    <p className="data m-0 p-0 align-self-end d-flex">{comment.data}</p>
+                            <div className="comentario container-fluid col-sm-8">
+                                <div className="comment container bg-light border border-dark text-dark my-2">
+                                    <div className="commflex d-flex justify-content-between">
+                                        <h3 className="text-dark">{comment.nome}</h3>
+                                        <p className="data m-0 p-0 align-self-end d-flex">{comment.data}</p>
+                                    </div>
+                                    <hr />
+                                    <p>{comment.comentario}</p>
                                 </div>
-                                <hr />
-                                <p>{comment.comentario}</p>
                             </div>
-                        </div>
                         </div>
                     )
                 })}

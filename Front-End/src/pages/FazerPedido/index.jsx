@@ -19,10 +19,17 @@ function FazerPedido() {
         event.preventDefault();
         
         let formData = new FormData(event.target);
-        const url = "http://recode/fullstackeletro/Back-end/register-order.php";
+        const beforeJson = Object.fromEntries(formData.entries());
+        const jsonForm = JSON.stringify(beforeJson)
+
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+
+        const url = "http://localhost:5000/registerorder";
         fetch(url, {
+            headers: headers,
             method: "POST",
-            body: formData
+            body: jsonForm
         })
             .then((response) => response.json())
             .then((dados) => {
@@ -52,7 +59,7 @@ function FazerPedido() {
             <div className="row my-4">
                 <div className="col-sm-2"></div>
                 <div className="col-sm-8 bg-light border border-dark">
-                    <form onSubmit={registerOrder} className="form_pedidos">
+                    <form onSubmit={registerOrder} className="form_pedidos" encType="application/x-www-form-urlencoded">
                         <h4 className="text-dark ml-3">Dados do pedido</h4>
                         <hr />
                         <div className="form-group">

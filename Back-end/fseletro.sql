@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 10-Dez-2020 às 20:05
+-- Tempo de geração: 16-Jan-2021 às 21:34
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `comentario` varchar(300) NOT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idcomentarios`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `comentarios`
@@ -45,16 +45,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
 INSERT INTO `comentarios` (`idcomentarios`, `nome`, `comentario`, `data`) VALUES
 (2, 'Enzo', 'Esta é uma mensagem de teste', '2020-11-01 01:56:52'),
 (3, 'João', 'Este é outro teste', '2020-11-01 01:57:42'),
-(4, 'Zé', 'Outro teste', '2020-11-01 01:57:52'),
-(5, 'Pedro', 'Mais um teste', '2020-11-01 01:58:44'),
-(6, 'Pedro', 'Mais um teste', '2020-11-01 01:58:56'),
-(7, 'Oristes', 'Teste', '2020-11-01 01:59:07'),
-(22, '', '', '2020-11-01 20:10:28'),
-(21, 'Elias', 'Testando', '2020-11-01 02:20:21'),
-(23, 'Oláaa', 'testeeeeee', '2020-12-04 21:08:20'),
-(24, 'Oláaa', 'testeeeeee', '2020-12-04 21:08:25'),
-(25, 'Heya', 'Mais um', '2020-12-04 21:08:32'),
-(26, 'Oui', 'rheherher', '2020-12-04 21:24:01');
+(39, 'Teste', 'Funcionando', '2021-01-16 18:20:03');
 
 -- --------------------------------------------------------
 
@@ -125,35 +116,21 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`id_pedido`),
   KEY `fk_pedido_produto_idx` (`fk_produto`),
   KEY `fk_pedido_estado_idx` (`estado_endereco`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pedidos`
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `nome_cliente`, `estado_endereco`, `bairro_endereco`, `logradouro_endereco`, `numero_endereco`, `cidade_endereco`, `telefone_cliente`, `quantidade`, `data_pedido`, `fk_produto`, `cpf_cliente`) VALUES
-(1, 'Enzo', 2, 'Jardim X', 'Rua João Sem Braço', '01', 'Cidade Teste', '11911111111', 1, '1000-01-01 00:00:00', 6, 11111111111),
 (2, 'João', 7, 'Jardim Y', 'Rua Pio IX', '02', 'Cidade Teste', '16922222222', 3, '1000-01-01 00:00:00', 9, 22222222222),
 (9, 'Pedro', 7, 'Jardim Z', 'Rua Flor De Lis', '01', 'Cidade Teste', '21933333333', 2, '1000-01-01 00:00:00', 5, 33333333333),
 (10, 'Rafael', 5, 'Boa Vista', 'Rua do Beco', '03', 'Cidade Teste', '61944444444', 1, '1000-01-01 00:00:00', 5, 44444444444),
 (11, 'Antônio', 7, 'Campo Limpo', 'Rua das Flores', '252', 'Cidade Teste', '19955555555', 1, '1000-01-01 00:00:00', 4, 55555555555),
 (12, 'Enzo', 8, 'Campos Elíseos', 'Rua do Teste', '2678', 'Cidade Teste', '111111111111', 2, '1000-01-01 00:00:00', 11, 66666666666),
-(13, 'Enzo', 8, 'Campo de Teste', 'Rua do Teste', '155', 'Cidade Placeholder', '111111111111', 2, '1000-01-01 00:00:00', 6, 77777777777),
-(14, 'Enzo', 6, 'Jardim dos Erros', 'Rua do Teste', '214', 'Cidade Placeholder', '111111111111', 2, '1000-01-01 00:00:00', 14, 88888888888),
-(15, 'Enzo', 8, 'Praça dos Bugs', 'Outra rua', '404', 'Cidade Placeholder', '22222222222', 5, '1000-01-01 00:00:00', 5, 99999999999),
-(16, 'Enzo', 7, 'Bosque dos Perdidos', 'Outra rua', '502', 'Cidade Placeholder', '22222222222', 5, '1000-01-01 00:00:00', 13, 10101010101),
-(17, 'Enzo', 2, 'Rio Escuro', 'Mais uma rua', '111', 'Cidade Placeholder', '22222222222', 5, '1000-01-01 00:00:00', 9, 11101010101),
 (18, 'Zé', 5, 'Rio X', 'Alguma rua', '235', 'Cidade Placeholder', '111111111111', 5, '1000-01-01 00:00:00', 8, 11011010101),
 (19, 'Vikk', 1, 'Rio Z', 'Rua qualquer', '212', 'Cidade Placeholder', '55555555555', 2, '1000-01-01 00:00:00', 10, 11110101001),
-(36, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:23', 6, 11111111111),
-(37, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:26', 6, 11111111111),
-(38, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:27', 6, 11111111111),
-(39, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:27', 6, 11111111111),
-(40, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:28', 6, 11111111111),
-(41, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:28', 6, 11111111111),
-(42, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:29', 6, 11111111111),
-(43, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:29', 6, 11111111111),
-(44, '38', 2, 'thtrhrhr', 'gefegewgf', '12', 'rgegregreger', '111111111111', 12, '2020-12-08 20:28:42', 6, 11111111111);
+(50, 'Enzo', 3, 'Tijuca', 'Rua Z', '124', 'Sao paulo', '70707070', 8, '2021-01-16 18:27:07', 5, 3222222222);
 
 -- --------------------------------------------------------
 

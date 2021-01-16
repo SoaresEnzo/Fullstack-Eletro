@@ -21,13 +21,13 @@ function Produtos() {
 
     useEffect(
         () => {
-            fetchData("http://localhost/Projetos_PHP/fullstackeletro/Back-end/produtos.php", setProduto)
+            fetchData("http://localhost:5000/getprodutos", setProduto)
 
         }, [])
 
     useEffect(
         () => {
-            fetchData("http://localhost/Projetos_PHP/fullstackeletro/Back-end/categorias.php", setCategorias)
+            fetchData("http://localhost:5000/getcategorias", setCategorias)
         }, [])
 
 

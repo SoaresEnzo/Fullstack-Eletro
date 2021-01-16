@@ -8,7 +8,7 @@ function RetornoBanco() {
     useEffect(
         () => {
             async function fetchData() {
-                const url = "http://recode/fullstackeletro/Back-end/pedidos.php";
+                const url = "http://localhost:5000/getpedidosjoined";
                 const response = await fetch(url);
                 setLinhas(await response.json());
             }
