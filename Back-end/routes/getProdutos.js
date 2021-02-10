@@ -6,9 +6,10 @@ module.exports = (app) => {
 
         var query = app.models.conteudoModels;
 
-        query.getProdutos(connection,(error,results,fields)=>{
-            res.json(results)
-        })
+            query.getProdutos(connection, (error, results, fields) => {
+                res.json(results)
+            })
+
 
 
     })

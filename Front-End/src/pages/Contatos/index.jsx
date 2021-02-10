@@ -8,12 +8,13 @@ import Email from '../../images/emailrender.png';
 function Contatos() {
     const [comments, setComments] = useState([]);
     const [render, setRender] = useState(false)
-    const [aviso, setAviso] = useState(false)
+    const [sucesso, setSucesso] = useState(false)
+    const [erro, setErro] = useState(false)
 
     useEffect(() => {
 
         async function dumpComments() {
-            const url = "http://localhost:5000/getcomentarios";
+            const url = "http://localhost:5000/comentarios";
             const response = await fetch(url);
             setComments(await response.json());
         }
@@ -31,7 +32,7 @@ function Contatos() {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        const url = "http://localhost:5000/insertcomment";
+        const url = "http://localhost:5000/comentarios";
         fetch(url, {
             headers: headers,
             method: "POST",
@@ -40,12 +41,21 @@ function Contatos() {
             .then((response) => response.json())
             .then((dados) => {
                 setRender(!render)
-                setAviso(dados)
-                setTimeout(
-                    () => {
-                        setAviso(false)
-                    },
-                    3000)
+                if (dados.erro) {
+                    setErro(true)
+                    setTimeout(
+                        () => {
+                            setErro(false)
+                        },
+                        3000)
+                } else {
+                    setSucesso(true)
+                    setTimeout(
+                        () => {
+                            setSucesso(false)
+                        },
+                        3000)
+                }
 
             })
 
@@ -83,12 +93,12 @@ function Contatos() {
                         <div className="container-fluid">
                             <form onSubmit={registerComment}>
                                 <div className="form-group">
-                                    <label htmlFor="nomemsg">Nome:</label>
-                                    <input type="text" name="nomemsg" id="nomemsg" className="form-control" placeholder="" aria-describedby="helpId" />
+                                    <label htmlFor="nome">Nome:</label>
+                                    <input type="text" name="nome" id="nome" className="form-control" placeholder="" aria-describedby="helpId" />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="mensagemmsg">Mensagem:</label>
-                                    <textarea className="form-control" name="mensagemmsg" id="mensagem" rows="3"></textarea>
+                                    <label htmlFor="comentario">Mensagem:</label>
+                                    <textarea className="form-control" name="comentario" id="comentario" rows="3"></textarea>
                                 </div>
 
                                 <button type="submit" className="btn btn-primary">Enviar</button>
@@ -96,22 +106,29 @@ function Contatos() {
                         </div>
 
                         {
-                            aviso && <div className="alert alert-success" role="alert">
+                            sucesso && <div className="alert alert-success" role="alert">
                                 Mensagem enviada com sucesso.
                           </div>
                         }
+
+                        {
+                            erro && <div className="alert alert-danger" role="alert">
+                                Houve um erro ao enviar a mensagem.
+                          </div>
+                        }
+
                     </div>
                     <div className="col-sm-2"></div>
                 </div>
 
                 {comments.map((comment) => {
                     return (
-                        <div className="row d-flex justify-content-center" key={comment.idcomentarios}>
+                        <div className="row d-flex justify-content-center" key={comment._id}>
                             <div className="comentario container-fluid col-sm-8">
                                 <div className="comment container bg-light border border-dark text-dark my-2">
                                     <div className="commflex d-flex justify-content-between">
                                         <h3 className="text-dark">{comment.nome}</h3>
-                                        <p className="data m-0 p-0 align-self-end d-flex">{comment.data}</p>
+                                        <p className="data m-0 p-0 align-self-end d-flex">{comment.data_registro}</p>
                                     </div>
                                     <hr />
                                     <p>{comment.comentario}</p>

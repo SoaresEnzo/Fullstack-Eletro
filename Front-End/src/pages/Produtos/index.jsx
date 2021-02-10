@@ -1,29 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import Menu from '../../Components/Menu';
 import Footer from '../../Components/Footer';
-import { Link } from 'react-router-dom';
+import fetchData from '../../functions/fetchData';
+
+const Vitrine = lazy(()=>import('../../Components/Vitrine'))
 
 function Produtos() {
-
-    const [produto, setProduto] = React.useState([]);
     let [categoria, setCategorias] = React.useState([]);
+
     let [filtro, setFiltro] = React.useState({
         categ: 'Todos',
         precoMin: 0,
         precoMax: 999999999999
     });
-
-    async function fetchData(url, func) {
-        const response = await fetch(url)
-        let dados = await response.json()
-        func(dados);
-    }
-
-    useEffect(
-        () => {
-            fetchData("http://localhost:5000/getprodutos", setProduto)
-
-        }, [])
 
     useEffect(
         () => {
@@ -40,7 +29,7 @@ function Produtos() {
         })
     }
 
-    function filtrarPreco(){
+    function filtrarPreco() {
 
         const precomin = parseFloat(document.getElementById("precoMin").value)
         const precomax = parseFloat(document.getElementById("precoMax").value)
@@ -49,7 +38,7 @@ function Produtos() {
             precoMin: precomin,
             precoMax: precomax
         })
-        
+
     }
 
     return (
@@ -61,7 +50,7 @@ function Produtos() {
             <hr></hr>
 
             <div className="grid-container row">
-                <aside className="categorias col-md-2 container-fluid pl-5">
+                <aside className="categorias col-md-3 container-fluid pl-5">
                     <h3>
                         Categorias
                 </h3>
@@ -104,26 +93,16 @@ function Produtos() {
 
                 </aside>
 
-                <section className="produtos col-md-10">
+                <section className="produtos col-md-9">
                     <div className="row">
 
-                        {produto.filter(
-                            produtoFiltrar => (produtoFiltrar.categoria === filtro.categ && parseFloat(produtoFiltrar.preco) > filtro.precoMin && parseFloat(produtoFiltrar.preco) < filtro.precoMax) || (filtro.categ === 'Todos' && parseFloat(produtoFiltrar.preco) > filtro.precoMin && parseFloat(produtoFiltrar.preco) < filtro.precoMax)).map(produto => (
-                                <div className="box_produto container align-self-end mx-3 my-3 text-center" id={produto.categoria} key={produto.idproduto} style={{ width: '250px', padding: '0px', margin: '0px' }}>
-                                    <img src={require('../../images/' + produto.imagem).default} style={{ width: '120px' }} alt="img-produto"></img>
-                                    <br></br>
-                                    {produto.nome_produto}
-                                    <hr style={{ margin: '0px' }}></hr>
-                                    <small className="text-danger">R$ {produto.preco_original}</small>
-                                    <p className="novo text-dark lead"><b>R$ {produto.preco} </b></p>
-
-                                    <Link to={{
-                                        pathname: '/fazerpedido/',
-                                        search: '&produto=' + produto.nome_produto + '&preco=' + produto.preco + '&produtoid=' + produto.idproduto
-                                    }} className="btn btn-block btn-danger">Fazer pedido</Link>
-                                </div>
-                            )
-                            )}
+                        <Suspense fallback={
+                            <div class="spinner-border" role="status">
+                        </div>
+                        }>
+                            <Vitrine filtro={filtro} />
+                            {console.log(<Vitrine />)}
+                        </Suspense>
 
                     </div>
                 </section>
