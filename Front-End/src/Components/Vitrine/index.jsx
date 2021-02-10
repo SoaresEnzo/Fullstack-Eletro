@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import fetchData from '../../functions/fetchData';
 
 const Vitrine = (props) => {
-    const [produto, setProduto] = React.useState([]);
+    const [produto, setProduto] = useState([]);
 
     let filtro = props.filtro
     useEffect(

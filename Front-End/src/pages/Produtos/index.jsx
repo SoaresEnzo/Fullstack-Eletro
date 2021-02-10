@@ -1,33 +1,19 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import Menu from '../../Components/Menu';
 import Footer from '../../Components/Footer';
-import fetchData from '../../functions/fetchData';
 
-const Vitrine = lazy(()=>import('../../Components/Vitrine'))
+// import Categorias from '../../Components/Categorias';
+
+const Vitrine = lazy(() => import('../../Components/Vitrine'))
+const Categorias = lazy(() => import('../../Components/Categorias'))
 
 function Produtos() {
-    let [categoria, setCategorias] = React.useState([]);
 
     let [filtro, setFiltro] = React.useState({
         categ: 'Todos',
         precoMin: 0,
         precoMax: 999999999999
     });
-
-    useEffect(
-        () => {
-            fetchData("http://localhost:5000/getcategorias", setCategorias)
-        }, [])
-
-
-    function handleClick(event) {
-        setFiltro(event.target.id)
-        setFiltro({
-            categ: event.target.id,
-            precoMin: filtro.precoMin,
-            precoMax: filtro.precoMax
-        })
-    }
 
     function filtrarPreco() {
 
@@ -55,16 +41,12 @@ function Produtos() {
                         Categorias
                 </h3>
                     <div className="list-group">
-                        {categoria.map((categ) => {
-                            return (
-                                <button onClick={handleClick} id={categ.categoria} key={categ.categoria} className="list-group-item list-group-item-action">
-                                    {categ.categoria} ({categ.quantidade})
-                                </button>
-                            )
-                        }
-                        )
-                        }
-
+                        
+                        <Suspense fallback={
+                            <div className="spinner-border" role="status"></div>
+                        }>
+                            <Categorias filtro={filtro} setFiltro={setFiltro} />
+                        </Suspense>
                     </div>
 
                     <h3>
@@ -97,11 +79,9 @@ function Produtos() {
                     <div className="row">
 
                         <Suspense fallback={
-                            <div class="spinner-border" role="status">
-                        </div>
+                            <div className="spinner-border" role="status"></div>
                         }>
                             <Vitrine filtro={filtro} />
-                            {console.log(<Vitrine />)}
                         </Suspense>
 
                     </div>

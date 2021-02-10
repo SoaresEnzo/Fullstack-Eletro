@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import Menu from '../../Components/Menu';
 import Footer from '../../Components/Footer';
 import Wpp from '../../images/WhatsApp-icone.png';
 import Email from '../../images/emailrender.png';
 
+const Comentarios = lazy(() => import('../../Components/Comentarios'))
 
 function Contatos() {
-    const [comments, setComments] = useState([]);
     const [render, setRender] = useState(false)
     const [sucesso, setSucesso] = useState(false)
     const [erro, setErro] = useState(false)
-
-    useEffect(() => {
-
-        async function dumpComments() {
-            const url = "http://localhost:5000/comentarios";
-            const response = await fetch(url);
-            setComments(await response.json());
-        }
-
-        dumpComments()
-    }, [render])
 
     function registerComment(event) {
         event.preventDefault();
@@ -120,23 +109,11 @@ function Contatos() {
                     </div>
                     <div className="col-sm-2"></div>
                 </div>
-
-                {comments.map((comment) => {
-                    return (
-                        <div className="row d-flex justify-content-center" key={comment._id}>
-                            <div className="comentario container-fluid col-sm-8">
-                                <div className="comment container bg-light border border-dark text-dark my-2">
-                                    <div className="commflex d-flex justify-content-between">
-                                        <h3 className="text-dark">{comment.nome}</h3>
-                                        <p className="data m-0 p-0 align-self-end d-flex">{comment.data_registro}</p>
-                                    </div>
-                                    <hr />
-                                    <p>{comment.comentario}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
+                <div className="container">
+                    <Suspense fallback={<div class="spinner-border" role="status"></div>}>
+                        <Comentarios render={render} />
+                    </Suspense>
+                </div>
             </main>
             <Footer />
         </div>
