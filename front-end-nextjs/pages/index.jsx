@@ -1,7 +1,7 @@
 import React from 'react';
-import Menu from '../src/Components/Menu';
-import Footer from '../src/Components/Footer';
-import { Link } from 'react-router-dom';
+import Menu from '../Components/Menu';
+import Footer from '../components/Footer';
+import Link from 'next/link';
 
 function Landing() {
     return (
@@ -14,7 +14,7 @@ function Landing() {
                     <hr className="my-2"></hr>
                     <p>Veja nossa seleção de eletrodomésticos</p>
                     <p className="lead">
-                        <Link to="/produtos" className="btn btn-primary btn-lg">Comprar</Link>
+                        <Link href="/Produtos"><a className="btn btn-primary btn-lg">Comprar</a></Link>
                     </p>
                 </div>
             </div>
@@ -23,4 +23,4 @@ function Landing() {
     )
 }
 
-export default Landing;
+module.exports = Landing;
